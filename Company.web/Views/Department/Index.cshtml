@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DepartmentDTO>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<a asp-controller="Department" asp-action="Create" class="btn btn-primary"> Create New Department</a>
+@if (Model.Count() >  0)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>CreateAt</th>
+                <th>Detaisl</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.code</td>
+                    <td>@item.Name</td>
+                    <td>@item.CreateAt</td>
+                    @await Html.PartialAsync("_ButtonsPartial", item.Id, new ViewDataDictionary(ViewData) { { "Controller", "Department" } })
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="mt-5 alert alert-warning">
+        <h3>There is no departments</h3>
+    </div>
+}
+

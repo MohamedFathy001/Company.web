@@ -1,0 +1,23 @@
+﻿@model UserUpdateViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<form asp-action="Update" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label class="col-form-label" asp-for="UserName"></label>
+        <input type="text" asp-for="UserName" class="form-control" />
+    </div>
+
+    <div>
+        <label class="col-form-label" asp-for="Email"></label>
+        <input type="text" asp-for="Email" class="form-control" />
+    </div>
+
+    <input type="submit" value="Update" class="btn btn-primary" />
+    <a class="btn btn-light" asp-action="Index">Back to list</a>
+</form>

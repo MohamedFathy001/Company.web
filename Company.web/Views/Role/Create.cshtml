@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IdentityRole
+@{
+    Layout = null;
+}
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="@Model.Name" class="form-control-label"></label>
+        <input asp-for="@Model.Name" class="form-control" />
+    </div>
+    <input type="submit" value="Create" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-light">Back to list </a>
+</form>

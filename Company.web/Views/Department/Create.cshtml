@@ -1,0 +1,27 @@
+﻿@model DepartmentDTO
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Create new Department</h1>
+<br />
+<br />
+<form asp-action="Create" method="post">
+    <div>
+        <label class="col-form-label" asp-for="code"></label>
+        <input type="text" asp-for="code" class="form-control"/>
+        @* <span asp-validation-for="code" class="text-danger"></span> *@
+    </div>
+     <div>
+        <label class="col-form-label" asp-for="Name"></label>
+        <input type="text" asp-for="Name" class="form-control"/>
+        @* <span asp-validation-for="Name" class="text-danger"></span> *@
+    </div>
+    <div>
+        @Html.ValidationSummary(true , "" , "Error while adding Department");
+    </div>
+    <input type="submit" value="Create" class="btn btn-primary"/>
+    <a class="btn btn-light" asp-action="Index">Back to list</a>
+</form>

@@ -1,0 +1,57 @@
+﻿@model EmployeeDTO
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    //hye zay el foreach el select list badlha value ely hya id w badlha el text ely 7ayzhar
+    var departments = new SelectList(ViewBag.Departments , nameof(DepartmentModel.Id) , nameof(DepartmentModel.Name));
+}
+
+<h1>Create new Employee</h1>
+<br />
+<br />
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div>
+        <label class="col-form-label" asp-for="Name"></label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div>
+        <label class="col-form-label" asp-for="Age"></label>
+        <input type="number" asp-for="Age" class="form-control" />
+    </div>
+    <div>
+        <label class="col-form-label" asp-for="Address"></label>
+        <input type="text" asp-for="Address" class="form-control" />
+    </div>
+    <div>
+        <label class="col-form-label" asp-for="Salary"></label>
+        <input type="number" asp-for="Salary" class="form-control" />
+    </div>
+    <div>
+        <label class="col-form-label" asp-for="Email"></label>
+        <input type="email" asp-for="Email" class="form-control" />
+    </div>
+    <div>
+        <label class="col-form-label" asp-for="PhoneNumber"></label>
+        <input type="number" asp-for="PhoneNumber" class="form-control" />
+    </div>
+    <div>
+        <label class="col-form-label" asp-for="HiringDate"></label>
+        <input type="date" asp-for="HiringDate" class="form-control" />
+    </div>
+    <div>
+        <label class="col-form-label" asp-for="DepartmentId"></label>
+        <select class="col-form-control" asp-items="@departments" asp-for="DepartmentId">
+            <option value="@null">--Select Department</option>
+        </select>
+    </div>
+    <div>
+        <label class="col-form-label" asp-for="Image">Image</label>
+        <input type="file" asp-for="Image" class="form-control" />
+    </div>
+    <div>
+        @Html.ValidationSummary(true, "", "Error while adding Department");
+    </div>
+    <input type="submit" value="Create" class="btn btn-primary" />
+    <a class="btn btn-light" asp-action="Index">Back to list</a>
+</form>
